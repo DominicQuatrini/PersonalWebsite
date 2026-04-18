@@ -1,9 +1,62 @@
-a {text-decoration: none; color: white}
-body {background-color: #0b2240}
-#div1 {font-size: 24pt; color: white; text-align: right}
-form {color: white}
-#div2 {display: flex; justify-content: center; align-items: center; font-size: 24pt}
-#div2 input {font-size: 24pt}
-#div2 textarea {font-size: 24pt}
-textarea {resize: none; color: black}
-label::after {content: "*"; color: red}
+body {
+margin: 0; /* removes browser's default margins to allow navbar to go across the entire screen */
+padding: 0; /* removes browser's default padding to allow navbar to go across the entire screen */
+min-height: 100vh; /* prevents margin collapsing caused by 'margin: 0' and 'padding: 0' */
+background-color: white;
+}
+
+#navbar {
+width: 100%;
+position: sticky;
+top: 0;
+background-color: #2D2A32;
+overflow: hidden; /* fixes formatting when using 'float: left' in '#navbar a' */
+}
+
+#navbar a {
+float: left; /* */
+text-decoration: none;
+color: #f2f2f2;
+text-align: center;
+padding: 14px 16px; /* forms the box shape around the link text */
+font-size: 18pt;
+}
+
+#navbar a:hover {
+background-color: #ddd;
+color: black;
+}
+
+#navbar a.active { /* changes color of nav links with class="active" */
+background-color: #67666B;
+color: white;
+}
+
+form {
+color: black;
+}
+
+#contact {
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 18pt
+}
+
+#contact input {
+font-size: 18pt
+}
+
+#contact textarea {
+font-size: 18pt
+}
+
+textarea {
+resize: none;
+color: black
+}
+
+label::after {
+content: "*";
+color: red
+}
