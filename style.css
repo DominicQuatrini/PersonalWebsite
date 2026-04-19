@@ -43,13 +43,14 @@ color: white;
 	padding: 25px; /* white space around all images */
 }
 #photogrid img {
-	width: 100%;
+	max-width: 100%;
 	height: auto;
 	object-fit: cover;
 	display: block;
 }
 #photogrid figure {
 	margin: 0;
+	overflow: hidden;
 }
 #container {
 	max-width: 1200px;
