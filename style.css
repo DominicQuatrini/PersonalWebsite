@@ -4,58 +4,77 @@ padding: 0; /* removes browser's default padding to allow navbar to go across th
 min-height: 100vh; /* prevents margin collapsing caused by 'margin: 0' and 'padding: 0' */
 background-color: white;
 }
-
 #navbar {
 width: 100%;
 position: sticky;
 top: 0;
 background-color: #2D2A32;
-overflow: hidden; /* fixes formatting when using 'float: left' in '#navbar a' */
+display: flex;
+justify-content: flex-start;
+flex-wrap: nowrap;
 }
-
 #navbar a {
-float: left; /* */
 text-decoration: none;
 color: #f2f2f2;
 text-align: center;
 padding: 14px 16px; /* forms the box shape around the link text */
 font-size: 18pt;
 }
-
+/* Mobile Fix: Shrink text and padding on small screens */
+@media screen and (max-width: 600px) {
+  #navbar a {
+    font-size: 12pt;
+    padding: 10px 8px;
+  }
+}
 #navbar a:hover {
 background-color: #ddd;
 color: black;
 }
-
 #navbar a.active { /* changes color of nav links with class="active" */
 background-color: #67666B;
 color: white;
 }
-
+#photogrid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr; /* 'auto auto auto' made weird proportions since there was leftover space */
+	gap: 10px; /* white space between images */
+	justify-content: center;
+	padding: 25px; /* white space around all images */
+}
+#photogrid img {
+	width: 100%;
+	height: auto;
+	object-fit: cover;
+	display: block;
+}
+#photogrid figure {
+	margin: 0;
+}
+#container {
+	max-width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+}
 form {
 color: black;
 }
-
 #contact {
 display: flex;
 justify-content: center;
 align-items: center;
 font-size: 18pt
 }
-
 #contact input {
 font-size: 18pt
 }
-
 #contact textarea {
 font-size: 18pt
 }
-
 textarea {
 resize: none;
 color: black
 }
-
 label::after {
 content: "*";
 color: red
