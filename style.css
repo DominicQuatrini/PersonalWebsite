@@ -1,17 +1,75 @@
-html{
-	scroll-behavior: smooth;
+html {
+	/*scroll-behavior: smooth;*/
 }
 main {
 	margin: 0 auto; /* aligns to the right margin */
-	min-height: 100vh; /* 100% of viewport height */
 	background-color: white;
 	max-width: 1200px;
 	width: 100%;
+	display: flex;
+	flex-direction: column;
+	padding: 2rem 1rem;
+}
+h1 {
+	font-size: 2rem;
+}
+p {
+	font-size: 1.5rem;
+	line-height: 1.8;
+}
+.button {
+	display: inline-block;
+	padding: 0.75rem 2rem;
+	font-size: 1rem;
+	color: white;
+	background-color: #007BFF;
+	border: none;
+	border-radius: 0.75rem;
+	text-decoration: none;
+	box-shadow: 0 6px 4px rgba(0, 0, 0, 0.1);
+	transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.button:hover {
+	background-color: #006adb;
+	box-shadow: 0 8px 6px rgba(0, 0, 0, 0.2);
+	transform: translateY(-2px);
+}
+.button:active {
+    transform: translateY(0);
+}
+#hero {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-height: 100vh;
+	gap: 1rem;
+	padding: 0 1rem;
+}
+#hero p {
+	text-indent: 2rem;
+}
+#buttons{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	min-height: 3vh;
+	gap: 1rem;
+}
+#top {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 3vh;
+	gap: 1rem;
 }
 nav {
 	margin: 0 auto;
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: center;
+	align-items: center;
 	max-width: 1200px;
 	width: 100%;
 }
@@ -19,8 +77,8 @@ nav a {
 	text-decoration: none;
 	color: black;
 	text-align: center;
-	padding: 14px 16px; /* forms the box shape around the link text */
-	font-size: 18pt;
+	padding: 1rem 1rem; /* forms the box shape around the link text */
+	font-size: 1.5rem;
 }
 footer {
 	margin: 0 auto;
@@ -29,7 +87,7 @@ footer {
 	align-items: center;
 	max-width: 1200px;
 	width: 100%;
-	padding: 20px 0px;
+	padding: 1rem 0rem;
 }
 @media (min-width: 600px) {
 	nav {
