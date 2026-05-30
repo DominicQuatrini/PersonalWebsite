@@ -18,6 +18,9 @@ main {
 h1 {
 	font-size: 2rem;
 }
+h2 {
+	font-size: 1.75rem;
+}
 p {
 	font-size: 1.5rem;
 	line-height: 1.8;
@@ -83,12 +86,23 @@ nav a {
 	font-size: 1.5rem;
 }
 footer {
-	margin: 0 auto;
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 	width: 100%;
-	padding: 0.5rem 1rem;
+	padding: 1rem 1rem;
+	border-top: 1px solid #333;
+	color: #888;
+}
+footer p {
+	font-size: 1rem;
+}
+footer a img {
+    filter: invert(70%) sepia(10%) saturate(100%) hue-rotate(180deg) brightness(90%);
+    transition: filter 0.3s ease;
+}
+footer a:hover img {
+    filter: invert(100%);
 }
 @media (min-width: 600px) {
 	nav {
