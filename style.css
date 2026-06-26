@@ -15,6 +15,8 @@ nav {
 	justify-content: center;
 	align-items: center;
 	width: 100%;
+}
+#animated-nav {
 	animation-name: slide;
 	animation-duration: 0.75s;
 }
@@ -55,6 +57,10 @@ p {
 }
 #hero p {
 	text-indent: 2rem;
+}
+#map {
+	height: 750px;
+	width: 100%;
 }
 footer {
 	display: flex;
