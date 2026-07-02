@@ -59,7 +59,7 @@ p {
 	text-indent: 2rem;
 }
 #map {
-	height: 750px;
+	height: 400px;
 	width: 100%;
 }
 footer {
@@ -125,12 +125,25 @@ footer a:hover img {
 	from {transform: translateX(-100%);}
 	to {transform: translateX(0);}
 }
-@media (min-width: 600px) {
+@media (min-width: 768px) { /* tablet */
 	nav {
 		justify-content: flex-end;
 	}
 	nav a {
 		padding: 10px 12px;
 		font-size: 16pt;
+	}
+}
+@media (min-width: 1024px) { /* desktop */
+	nav {
+		justify-content: flex-end;
+	}
+	nav a {
+		padding: 10px 12px;
+		font-size: 16pt;
+	}
+	#map {
+	height: 800px;
+	width: 100%;
 	}
 }
