@@ -1,5 +1,5 @@
 * {
-    box-sizing: border-box; /* includes padding in 100% width */
+    box-sizing: border-box;
 }
 html {
 	scroll-behavior: smooth;
@@ -24,11 +24,11 @@ nav a {
 	text-decoration: none;
 	color: #c9c9c9;
 	text-align: center;
-	padding: 1rem 0.4rem; /* forms the box shape around the link text */
+	padding: 1rem 0.4rem;
 	font-size: 1.5rem;
 }
 main {
-	margin: 0 auto; /* aligns to the right margin */
+	margin: 0 auto;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -135,6 +135,10 @@ footer a:hover img {
 	}
 }
 @media (min-width: 1024px) { /* desktop */
+	html {
+		max-width: 1440px;
+		margin: 0 auto;
+	}
 	nav {
 		justify-content: flex-end;
 	}
@@ -143,7 +147,7 @@ footer a:hover img {
 		font-size: 16pt;
 	}
 	#map {
-	height: 800px;
+	height: 1000px;
 	width: 100%;
 	}
 }
