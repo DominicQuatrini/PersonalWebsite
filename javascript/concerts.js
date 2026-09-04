@@ -113,9 +113,11 @@ var markerGroup = L.markerClusterGroup({
 });
 
 for (let i = 0; i < concerts.length; i++) {
-    const marker = L.marker([concerts[i].lat, concerts[i].lng]).addTo(markerGroup);
-        marker.concert = concerts[i];
+    const marker = L.marker([concerts[i].lat, concerts[i].lng]);
+    marker.concert = concerts[i];
     marker.on('click', onMarkerClick);
+
+    markerGroup.addLayer(marker);
 }
 
 for (let i = 0; i < concerts.length; i++) {
