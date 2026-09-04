@@ -122,15 +122,5 @@ for (let i = 0; i < concerts.length; i++) {
     bounds.extend([concerts[i].lat, concerts[i].lng]);
 }
 
-map.addTo(markerGroup);
+markerGroup.addTo(map);
 map.fitBounds(bounds);
-
-/*
-fit map to bounds
-marker clustering
-- determine if markers are nearby
-- determine centroid of cluster
-- create cluster marker at centroid
-- on click, expand cluster to show individual markers
-marker spiderfy
-*/
