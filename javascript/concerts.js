@@ -97,20 +97,32 @@ function onMarkerClick(e) {
     console.log(this);
 }
 
+var markerGroup = L.markerClusterGroup({
+    // Enable/disable spiderfy at max zoom (default: true)
+    spiderfyOnMaxZoom: true, 
+    
+    // Increase distance of expanded markers from the center (default: 1)
+    spiderfyDistanceMultiplier: 1.5, 
+    
+    // Style the lines connecting the cluster center to the expanded markers
+    spiderLegPolylineOptions: { 
+        weight: 1.5, 
+        color: '#222', 
+        opacity: 0.5 
+    }
+});
+
 for (let i = 0; i < concerts.length; i++) {
-    const marker = L.marker([concerts[i].lat, concerts[i].lng]).addTo(map);
+    const marker = L.marker([concerts[i].lat, concerts[i].lng]).addTo(markerGroup);
         marker.concert = concerts[i];
     marker.on('click', onMarkerClick);
-}
-
-function onZoom() {
-    map.latLngToLayerPoint(concerts[i].lat, concerts[i].lng);
 }
 
 for (let i = 0; i < concerts.length; i++) {
     bounds.extend([concerts[i].lat, concerts[i].lng]);
 }
 
+map.addTo(markerGroup);
 map.fitBounds(bounds);
 
 /*
