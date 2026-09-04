@@ -59,7 +59,7 @@ p {
 	text-indent: 2rem;
 }
 #map {
-	height: 400px;
+	height: 500px;
 	width: 100%;
 }
 footer {
@@ -133,6 +133,10 @@ footer a:hover img {
 		padding: 10px 12px;
 		font-size: 16pt;
 	}
+	#map {
+		height: 800px;
+		width: 100%;
+	}
 }
 @media (min-width: 1024px) { /* desktop */
 	html {
@@ -147,7 +151,7 @@ footer a:hover img {
 		font-size: 16pt;
 	}
 	#map {
-	height: 1000px;
-	width: 100%;
+		height: 1000px;
+		width: 100%;
 	}
 }
