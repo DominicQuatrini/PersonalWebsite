@@ -7,18 +7,6 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-function concert(artist, venue, tour, date, city, state, price, lat, lng) {
-    this.artist = artist;
-    this.venue = venue;
-    this.tour = tour;
-    this.date = date;
-    this.city = city;
-    this.state = state;
-    this.price = price;
-    this.lat = lat;
-    this.lng = lng;
-}
-
 let climatePledgeArenaLat = 47.622238569760036;
 let climatePledgeArenaLng = -122.35393044884134;
 
@@ -61,6 +49,7 @@ let crocodileLng = -122.3491493445646;
 let gorgeAmphitheatreLat = 47.09992492081298;
 let gorgeAmphitheatreLng = -119.99469097865824;
 
+/*
 const concerts = [
     new concert("Cigarettes After Sex", "McMenamins Historic Edgefield Manor", "North American Tour 2023", "August 26, 2023", "Troutdale", "OR", 31.20, edgefieldManorLat, edgefieldManorLng),
     new concert("Cigarettes After Sex", "Climate Pledge Arena", "X's World Tour", "September 28, 2024", "Seattle", "WA", 86.05,climatePledgeArenaLat, climatePledgeArenaLng),
@@ -88,16 +77,35 @@ const concerts = [
     new concert("The Neighbourhood", "WAMU Theater", "The Wourld Tour", "October 3, 2026", "Seattle", "WA", 176.12, wamuLat, wamuLng),
     new concert("beabadoobee", "Climate Pledge Arena", "The Powerlines Tour", "October 29, 2026", "Seattle", "WA", 100.17, climatePledgeArenaLat, climatePledgeArenaLng)
 ];
+*/
+
+
 
 function onMarkerClick(e) {
+    const concert = this.concert;
     var popup = L.popup()
         .setLatLng(e.latlng)
-        .setContent("Artist(s): " + this.concert.artist + "<br>Venue: " + this.concert.venue + "<br>Tour: " + this.concert.tour + "<br>Date: " + this.concert.date + "<br>City: " + this.concert.city + "<br>State: " + this.concert.state)
+        .setContent("Artist(s): " + concert.artists +
+                    "<br>Venue: " + concert.venue_name +
+                    "<br>Tour: " + concert.tour_name +
+                    "<br>Date: " + concert.concert_date)
         .openOn(map);
-    console.log(this);
+    console.log(concert);
 }
 
-var markerGroup = L.markerClusterGroup({
+async function loadConcerts() {
+    console.log("Starting loadConcerts...");
+
+    const response = await fetch('/api/concerts');
+    const concerts = await response.json();
+
+    if (!response.ok) {
+            throw new Error(`API returned ${response.status}`);
+        }
+
+    console.log("Concerts:", concerts);
+
+    var markerGroup = L.markerClusterGroup({
     // Enable/disable spiderfy at max zoom (default: true)
     spiderfyOnMaxZoom: true, 
     
@@ -110,19 +118,19 @@ var markerGroup = L.markerClusterGroup({
         color: '#222', 
         opacity: 0.5 
     }
-});
+    });
 
-for (let i = 0; i < concerts.length; i++) {
-    const marker = L.marker([concerts[i].lat, concerts[i].lng]);
-    marker.concert = concerts[i];
-    marker.on('click', onMarkerClick);
+    for (let i = 0; i < concerts.length; i++) {
+        const marker = L.marker([concerts[i].venue_latitude, concerts[i].venue_longitude]);
+        marker.concert = concerts[i];
+        marker.on('click', onMarkerClick);
 
-    markerGroup.addLayer(marker);
+        markerGroup.addLayer(marker);
+        bounds.extend([concerts[i].venue_latitude, concerts[i].venue_longitude]);
+    }
+
+    markerGroup.addTo(map);
+    map.fitBounds(bounds);
 }
 
-for (let i = 0; i < concerts.length; i++) {
-    bounds.extend([concerts[i].lat, concerts[i].lng]);
-}
-
-markerGroup.addTo(map);
-map.fitBounds(bounds);
+loadConcerts();

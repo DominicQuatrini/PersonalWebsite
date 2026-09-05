@@ -159,3 +159,19 @@ INSERT INTO concert_artists (concert_id, artist_id, artist_role) VALUES
 (23, 38, "headliner"),
 (24, 39, "headliner"),
 (25, 40, "headliner");
+
+SELECT * FROM artists;
+SELECT * FROM concerts;
+INSERT INTO concerts (concert_date, ticket_price, tour_name, venue_id) VALUES
+("2026-08-30", 69.35, "The Great Divide Tour", 2);
+INSERT INTO artists (artist_name) VALUES
+("Noah Kahan"),
+("Annabelle Dinda");
+INSERT INTO concert_artists (concert_id, artist_id, artist_role) VALUES
+(26, 41, "headliner"),
+(26, 42, "opener"),
+(26, 16, "opener");
+
+SELECT * FROM concert_artists AS ca
+JOIN concerts AS c ON ca.concert_id = c.concert_id
+JOIN artists AS a ON ca.artist_id = a.artist_id
