@@ -7,88 +7,82 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-/*
-const concerts = [
-    new concert("Cigarettes After Sex", "McMenamins Historic Edgefield Manor", "North American Tour 2023", "August 26, 2023", "Troutdale", "OR", 31.20, edgefieldManorLat, edgefieldManorLng),
-    new concert("Cigarettes After Sex", "Climate Pledge Arena", "X's World Tour", "September 28, 2024", "Seattle", "WA", 86.05,climatePledgeArenaLat, climatePledgeArenaLng),
-    new concert("Omar Apollo, Kevin Abstract", "WAMU Theater", "God Said No Tour", "October 1, 2024", "Seattle", "WA", 64.50, wamuLat, wamuLng),
-    new concert("Lamp", "Showbox SoDo", "World Tour FUTURE BEHIND ME North America 2024", "October 7, 2024", "Seattle", "WA", 53.84, showboxSodoLat, showboxSodoLng),
-    new concert("Clairo, Alice Phoebe Lou", "Paramount Theatre", "Charm Tour", "October 11, 2024", "Seattle", "WA", 71.31, paramountTheatreLat, paramountTheatreLng),
-    new concert("Jordana, Rachel Bobbitt", "Madame Lou's", "Lively Premonition Tour", "February 12, 2025", "Seattle", "WA", 33.07, madameLousLat, madameLousLng),
-    new concert("Malcolm Todd, Sophie Gray", "McMenamins Crystal Ballroom", "The Wholesome Rockstar Tour", "June 5, 2025", "Portland", "OR", 40.74, crystalBallroomLat, crystalBallroomLng),
-    new concert("grentperez, Rocco", "Showbox SoDo", "Backflips in a Restaurant Tour", "June 8, 2025", "Seattle", "WA", 166.93, showboxSodoLat, showboxSodoLng),
-    new concert("The Marías, julie", "WAMU Theater", "Submarine Tour", "July 27, 2025", "Seattle", "WA", 69.07, wamuLat, wamuLng),
-    new concert("Hozier, Gigi Perez", "T-Mobile Park", "Unreal Unearth Tour 2025", "August 14, 2025", "Seattle", "WA", 180.10, tMobileParkLat, tMobileParkLng),
-    new concert("Bruno Mars", "Dolby Live at Park MGM", "", "August 23, 2025", "Las Vegas", "NV", 1223.25, dolbyLiveLat, dolbyLiveLng),
-    new concert("Lord Huron, Kevin Morby", "Climate Pledge Arena", "The Cosmic Selector Tour", "October 18, 2025", "Seattle", "WA", 0, climatePledgeArenaLat, climatePledgeArenaLng),
-    new concert("Matt Maltese, Cornelia Murr", "Moore Theatre", "Tour For You My Whole Life", "October 19, 2025", "Seattle", "WA", 27.80, mooreTheatreLat, mooreTheatreLng),
-    new concert("sombr", "Moda Center", "The Late Nights Tour", "October 25, 2025", "Portland", "OR", 85.65, modaCenterLat, modaCenterLng),
-    new concert("Summer Salt, Boyscott, Wabie", "The Crocodile", "Reside North America Tour", "February 22, 2026", "Seattle", "WA", 51.35, crocodileLat, crocodileLng),
-    new concert("Yot Club, Renny Conti", "Neptune Theatre", "Rufus Tour", "June 1, 2026", "Seattle", "WA", 35.60, neptuneTheatreLat, neptuneTheatreLng),
-    new concert("Joji, nate sib", "Climate Pledge Arena", "Solaris Tour", "July 19, 2026", "Seattle", "WA", 155.58, climatePledgeArenaLat, climatePledgeArenaLng),
-    new concert("YOASOBI", "Climate Pledge Arena", "Never Ending Stories Tour", "August 12, 2026", "Seattle", "WA", 75.15, climatePledgeArenaLat, climatePledgeArenaLng),
-    new concert("Not For Radio", "Paramount Theatre", "A Summer In The Forest: North America Tour", "August 14, 2026", "Seattle", "WA", 56.60, paramountTheatreLat, paramountTheatreLng),
-    new concert("Daniel Caesar, 070 Shake", "Moda Center", "Son of Spergy Tour", "August 18, 2026", "Portland", "OR", 74.05, modaCenterLat, modaCenterLng),
-    new concert("Tame Impala, Dominic Fike", "Climate Pledge Arena", "The Deadbeat Tour", "September 1, 2026", "Seattle", "WA", 127.38, climatePledgeArenaLat, climatePledgeArenaLng),
-    new concert("wave to earth", "WAMU Theater", "The Pieces Tour", "September 5, 2026", "Seattle", "WA", 67.15, wamuLat, wamuLng),
-    new concert("Jack Johnson", "Gorge Amphitheatre", "Surfilmusic Tour", "September 26, 2026", "George", "WA", 69.68, gorgeAmphitheatreLat, gorgeAmphitheatreLng),
-    new concert("The Neighbourhood", "WAMU Theater", "The Wourld Tour", "October 3, 2026", "Seattle", "WA", 176.12, wamuLat, wamuLng),
-    new concert("beabadoobee", "Climate Pledge Arena", "The Powerlines Tour", "October 29, 2026", "Seattle", "WA", 100.17, climatePledgeArenaLat, climatePledgeArenaLng)
-];
-*/
-
-
-
-function onMarkerClick(e) {
-    const concert = this.concert;
-    var popup = L.popup()
-        .setLatLng(e.latlng)
-        .setContent("Artist(s): " + concert.artists +
-                    "<br>Venue: " + concert.venue_name +
-                    "<br>Tour: " + concert.tour_name +
-                    "<br>Date: " + concert.concert_date)
-        .openOn(map);
-    console.log(concert);
-}
-
 async function loadConcerts() {
+    async function loadConcerts() {
     console.log("Starting loadConcerts...");
 
     const response = await fetch('/api/concerts');
-    const concerts = await response.json();
 
     if (!response.ok) {
-            throw new Error(`API returned ${response.status}`);
-        }
+        throw new Error(`API returned ${response.status}`);
+    }
+
+    const concerts = await response.json();
 
     console.log("Concerts:", concerts);
 
-    var markerGroup = L.markerClusterGroup({
-    // Enable/disable spiderfy at max zoom (default: true)
-    spiderfyOnMaxZoom: true, 
-    
-    // Increase distance of expanded markers from the center (default: 1)
-    spiderfyDistanceMultiplier: 1.5, 
-    
-    // Style the lines connecting the cluster center to the expanded markers
-    spiderLegPolylineOptions: { 
-        weight: 1.5, 
-        color: '#222', 
-        opacity: 0.5 
+    const venues = {};
+
+    for (const concert of concerts) {
+        const venueKey = concert.venue_name;
+
+        if (!venues[venueKey]) {
+            venues[venueKey] = {
+                venue_name: concert.venue_name,
+                venue_latitude: concert.venue_latitude,
+                venue_longitude: concert.venue_longitude,
+                concerts: []
+            };
+        }
+
+        venues[venueKey].concerts.push(concert);
     }
+
+    console.log("Venues:", venues);
+
+    const markerGroup = L.markerClusterGroup({
+        spiderfyOnMaxZoom: true,
+        showCoverageOnHover: false,
+        zoomToBoundsOnClick: true,
+        spiderfyDistanceMultiplier: 2
     });
 
-    for (let i = 0; i < concerts.length; i++) {
-        const marker = L.marker([concerts[i].venue_latitude, concerts[i].venue_longitude]);
-        marker.concert = concerts[i];
-        marker.on('click', onMarkerClick);
+    for (const venueName in venues) {
+
+        const venue = venues[venueName];
+
+        const marker = L.marker([
+            venue.venue_latitude,
+            venue.venue_longitude
+        ]);
+
+        let popupContent = `<strong>${venue.venue_name}</strong><br><br>`;
+
+        for (const concert of venue.concerts) {
+            popupContent += `
+                <strong>${concert.artists}</strong><br>
+                ${concert.concert_date}<br>
+                ${concert.tour_name}<br>
+                $${concert.ticket_price}<br><br>
+            `;
+        }
+
+        marker.bindPopup(popupContent);
 
         markerGroup.addLayer(marker);
-        bounds.extend([concerts[i].venue_latitude, concerts[i].venue_longitude]);
+
+        bounds.extend([
+            venue.venue_latitude,
+            venue.venue_longitude
+        ]);
     }
 
     markerGroup.addTo(map);
-    map.fitBounds(bounds);
+
+    if (bounds.isValid()) {
+        map.fitBounds(bounds);
+    }
+}
 }
 
 loadConcerts();
