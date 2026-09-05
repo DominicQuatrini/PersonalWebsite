@@ -8,7 +8,6 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 async function loadConcerts() {
-    async function loadConcerts() {
     console.log("Starting loadConcerts...");
 
     const response = await fetch('/api/concerts');
@@ -82,7 +81,6 @@ async function loadConcerts() {
     if (bounds.isValid()) {
         map.fitBounds(bounds);
     }
-}
 }
 
 loadConcerts();
