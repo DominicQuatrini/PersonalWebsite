@@ -43,7 +43,8 @@ async function loadConcerts() {
         spiderfyOnMaxZoom: true,
         showCoverageOnHover: false,
         zoomToBoundsOnClick: true,
-        spiderfyDistanceMultiplier: 2
+        spiderfyDistanceMultiplier: 2,
+        maxClusterRadius: 30
     });
 
     for (const venueName in venues) {
@@ -77,10 +78,7 @@ async function loadConcerts() {
     }
 
     markerGroup.addTo(map);
-
-    if (bounds.isValid()) {
-        map.fitBounds(bounds);
-    }
+    map.fitBounds(bounds);
 }
 
 loadConcerts();
