@@ -1,5 +1,4 @@
-var map = L.map('map');
-
+let map = L.map('map');
 let bounds = L.latLngBounds();
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {

@@ -134,15 +134,29 @@ footer a:hover img {
 		font-size: 16pt;
 	}
 	#map {
-		height: 800px;
+		height: 700px;
 		width: 100%;
 	}
 }
-@media (min-width: 1024px) { /* desktop */
+@media (min-width: 1024px) { /* 1080p desktop */
 	html {
 		max-width: 1440px;
 		margin: 0 auto;
 	}
+	nav {
+		justify-content: flex-end;
+	}
+	nav a {
+		padding: 10px 12px;
+		font-size: 16pt;
+	}
+	#map {
+		height: 800px;
+		width: 100%;
+	}
+}
+
+@media (min-width: 1440px) { /* 1440p desktop */
 	nav {
 		justify-content: flex-end;
 	}

@@ -32,6 +32,48 @@ CREATE TABLE concert_artists (
     FOREIGN KEY (artist_id) REFERENCES artists(artist_id) ON DELETE CASCADE
 );
 
+INSERT INTO artists (artist_name) VALUES
+("Cigarettes After Sex"),
+("Omar Apollo"),
+("Kevin Abstract"),
+("Lamp"),
+("Clairo"),
+("Alice Phoebe Lou"),
+("Jordana"),
+("Rachel Bobbitt"),
+("Malcolm Todd"),
+("Sophie Gray"),
+("grentperez"),
+("Rocco"),
+("The Marías"),
+("julie"),
+("Hozier"),
+("Gigi Perez"),
+("Bruno Mars"),
+("Lord Huron"),
+("Kevin Morby"),
+("Matt Maltese"),
+("Cornelia Murr"),
+("sombr"),
+("Summer Salt"),
+("Boyscott"),
+("Wabie"),
+("Yot Club"),
+("Renny Conti"),
+("Joji"),
+("Corbin"),
+("nate sib"),
+("YOASOBI"),
+("Not For Radio"),
+("Daniel Caesar"),
+("070 Shake"),
+("Tame Impala"),
+("Dominic Fike"),
+("wave to earth"),
+("Jack Johnson"),
+("The Neighbourhood"),
+("beabadoobee");
+
 INSERT INTO venues (venue_name, venue_latitude, venue_longitude) VALUES
 ("Climate Pledge Arena", 47.622238569760036, -122.35393044884134),
 ("T-Mobile Park", 47.591728807371010, -122.33254027298267),
@@ -74,48 +116,6 @@ INSERT INTO concerts (concert_date, ticket_price, tour_name, venue_id) VALUES
 ("2026-09-26", 69.68, "Surfilmusic Tour", 14),
 ("2026-10-03", 176.12, "The Wourld Tour", 6),
 ("2026-10-29", 100.17, "The Powerlines Tour", 1);
-
-INSERT INTO artists (artist_name) VALUES
-("Cigarettes After Sex"),
-("Omar Apollo"),
-("Kevin Abstract"),
-("Lamp"),
-("Clairo"),
-("Alice Phoebe Lou"),
-("Jordana"),
-("Rachel Bobbitt"),
-("Malcolm Todd"),
-("Sophie Gray"),
-("grentperez"),
-("Rocco"),
-("The Marías"),
-("julie"),
-("Hozier"),
-("Gigi Perez"),
-("Bruno Mars"),
-("Lord Huron"),
-("Kevin Morby"),
-("Matt Maltese"),
-("Cornelia Murr"),
-("sombr"),
-("Summer Salt"),
-("Boyscott"),
-("Wabie"),
-("Yot Club"),
-("Renny Conti"),
-("Joji"),
-("Corbin"),
-("nate sib"),
-("YOASOBI"),
-("Not For Radio"),
-("Daniel Caesar"),
-("070 Shake"),
-("Tame Impala"),
-("Dominic Fike"),
-("wave to earth"),
-("Jack Johnson"),
-("The Neighbourhood"),
-("beabadoobee");
 
 INSERT INTO concert_artists (concert_id, artist_id, artist_role) VALUES
 (1, 1, "headliner"),
@@ -160,18 +160,14 @@ INSERT INTO concert_artists (concert_id, artist_id, artist_role) VALUES
 (24, 39, "headliner"),
 (25, 40, "headliner");
 
-SELECT * FROM artists;
-SELECT * FROM concerts;
 INSERT INTO concerts (concert_date, ticket_price, tour_name, venue_id) VALUES
 ("2026-08-30", 69.35, "The Great Divide Tour", 2);
+
 INSERT INTO artists (artist_name) VALUES
 ("Noah Kahan"),
 ("Annabelle Dinda");
+
 INSERT INTO concert_artists (concert_id, artist_id, artist_role) VALUES
 (26, 41, "headliner"),
 (26, 42, "opener"),
 (26, 16, "opener");
-
-SELECT * FROM concert_artists AS ca
-JOIN concerts AS c ON ca.concert_id = c.concert_id
-JOIN artists AS a ON ca.artist_id = a.artist_id
