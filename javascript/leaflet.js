@@ -61,13 +61,7 @@ async function loadConcerts() {
     const concerts = await fetchConcerts();
     const venues = groupByVenue(concerts);
 
-    const markerGroup = L.markerClusterGroup({
-        showCoverageOnHover: false,
-        zoomToBoundsOnClick: true,
-        maxClusterRadius: 5,
-        disableClusteringAtZoom: 10
-    });
-
+    const markerGroup = L.layerGroup();
     const bounds = L.latLngBounds();
 
     for (const venueID in venues) {
