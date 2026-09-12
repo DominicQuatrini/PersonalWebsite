@@ -42,10 +42,7 @@ function zoomToVenue(venue) {
 }
 
 function createVenueMarker(venue) {
-    const marker = L.marker([
-        venue.venue_latitude,
-        venue.venue_longitude
-    ]);
+    const marker = L.marker([venue.venue_latitude, venue.venue_longitude]);
 
     bindMarkerPopup(marker, venue);
 
@@ -61,37 +58,30 @@ function bindMarkerPopup(marker, venue) {
 
     for (const concert of venue.concerts) {
         popupContent += `
-            <strong>${concert.artists}</strong><br>
+            <hr>
+            <strong>${concert.artists}</strong> - ${concert.tour_name}<br>
             ${concert.concert_date}<br>
-            ${concert.tour_name}<br>
-            $${concert.ticket_price}<br><br>
-        `;
+            $${concert.ticket_price.toFixed(2)}<br><br>`;
     }
     marker.bindPopup(popupContent);
 }
 
 function addHomeButton() {
     const homeControl = L.Control.extend({
-    options: {
-        position: 'topleft'
-    },
+    options: {position: 'topleft'},
+        onAdd: function () {
+            const button = L.DomUtil.create('button', 'leaflet-bar leaflet-control home-button');
 
-    onAdd: function () {
-        const button = L.DomUtil.create(
-            'button',
-            'leaflet-bar leaflet-control home-button'
-        );
+            button.innerHTML = '<img id="home-icon" src="assets/icons/home.svg" alt="Home">';
+            button.title = 'Reset map view';
+            button.type = 'button';
 
-        button.innerHTML = '<img id="home-icon" src="assets/icons/home.svg" alt="Home">';
-        button.title = 'Reset map view';
-        button.type = 'button';
+            button.addEventListener('click', resetMapView);
 
-        button.addEventListener('click', resetMapView);
+            L.DomEvent.disableClickPropagation(button);
 
-        L.DomEvent.disableClickPropagation(button);
-
-        return button;
-    }
+            return button;
+        }
     });
     map.addControl(new homeControl());
 }
