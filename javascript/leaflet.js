@@ -82,7 +82,7 @@ function addHomeButton() {
             'leaflet-bar leaflet-control home-button'
         );
 
-        button.innerHTML = '<img src="assets/icons/home.svg" alt="Home">';
+        button.innerHTML = '<img id="home-icon" src="assets/icons/home.svg" alt="Home">';
         button.title = 'Reset map view';
         button.type = 'button';
 

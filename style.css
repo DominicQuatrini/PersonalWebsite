@@ -152,8 +152,9 @@ footer a:hover img {
     width: 34px;
     height: 34px;
     font-size: 20px;
+	background-color: white;
 }
-.home-button svg {
+.home-button #home-icon {
     width: 20px;
     height: 20px;
 }
