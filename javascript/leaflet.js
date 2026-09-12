@@ -1,4 +1,5 @@
 const map = L.map('map');
+const bounds = L.latLngBounds();
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -32,10 +33,12 @@ function groupByVenue(concerts) {
     return venues;
 }
 
+function resetMapView() {
+    map.flyToBounds(bounds, {duration: 1});
+}
+
 function zoomToVenue(venue) {
-    map.flyTo(
-        [venue.venue_latitude, venue.venue_longitude], 14, {duration: 1}
-    );
+    map.flyTo([venue.venue_latitude, venue.venue_longitude], 14, {duration: 1});
 }
 
 function createVenueMarker(venue) {
@@ -67,12 +70,37 @@ function bindMarkerPopup(marker, venue) {
     marker.bindPopup(popupContent);
 }
 
+function addHomeButton() {
+    const homeControl = L.Control.extend({
+    options: {
+        position: 'topleft'
+    },
+
+    onAdd: function () {
+        const button = L.DomUtil.create(
+            'button',
+            'leaflet-bar leaflet-control'
+        );
+
+        button.innerHTML = '⌂';
+        button.title = 'Reset map view';
+        button.type = 'button';
+
+        button.addEventListener('click', resetMapView);
+
+        L.DomEvent.disableClickPropagation(button);
+
+        return button;
+    }
+    });
+    map.addControl(new homeControl());
+}
+
 async function loadConcerts() {
     const concerts = await fetchConcerts();
     const venues = groupByVenue(concerts);
 
     const markerGroup = L.layerGroup();
-    const bounds = L.latLngBounds();
 
     for (const venueID in venues) {
         const venue = venues[venueID];
@@ -91,3 +119,4 @@ async function loadConcerts() {
 }
 
 loadConcerts();
+addHomeButton();
