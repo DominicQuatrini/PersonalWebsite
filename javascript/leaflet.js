@@ -53,6 +53,15 @@ function createVenueMarker(venue) {
     return marker;
 }
 
+function formatDate(date) {
+    return new Date(date + 'T00:00:00').toLocaleDateString('en-US', {
+        weekday: 'short',
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric'
+    });
+}
+
 function bindMarkerPopup(marker, venue) {
     let popupContent = `<strong>${venue.venue_name}</strong><br><br>`;
 
@@ -60,7 +69,7 @@ function bindMarkerPopup(marker, venue) {
         popupContent += `
             <hr>
             <strong>${concert.artists}</strong> - ${concert.tour_name}<br>
-            ${concert.concert_date}<br>
+            ${formatDate(concert.concert_date)}<br>
             $${concert.ticket_price.toFixed(2)}<br><br>`;
     }
     marker.bindPopup(popupContent);
