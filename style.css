@@ -19,10 +19,6 @@ nav {
 	align-items: center;
 	width: 100%;
 }
-#animated-nav {
-	animation-name: slide;
-	animation-duration: 0.75s;
-}
 nav a {
 	text-decoration: none;
 	color: #c9c9c9;
@@ -47,23 +43,6 @@ p {
 	font-size: 1.5rem;
 	line-height: 1.8;
 }
-#hero {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	min-height: 100vh;
-	opacity: 0;
-	animation-name: fadeIn;
-	animation-duration: 1s;
-	animation-delay: 0.25s;
-	animation-fill-mode: forwards;
-}
-#hero p {
-	text-indent: 2rem;
-}
-#map {
-	width: 100%;
-}
 footer {
 	display: flex;
 	justify-content: space-between;
@@ -82,6 +61,33 @@ footer a img {
 }
 footer a:hover img {
     filter: invert(100%);
+}
+/* -------------------- index page animations, hero section, buttons -------------------- */
+@keyframes fadeIn {
+	from {opacity: 0;}
+	to {opacity: 1;}
+}
+@keyframes slide {
+	from {transform: translateX(-100%);}
+	to {transform: translateX(0);}
+}
+#hero {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-height: 100vh;
+	opacity: 0;
+	animation-name: fadeIn;
+	animation-duration: 1s;
+	animation-delay: 0.25s;
+	animation-fill-mode: forwards;
+}
+#hero p {
+	text-indent: 2rem;
+}
+#animated-nav {
+	animation-name: slide;
+	animation-duration: 0.75s;
 }
 .button {
 	display: inline-block;
@@ -119,12 +125,13 @@ footer a:hover img {
 	min-height: 3vh;
 	gap: 1rem;
 }
+/* -------------------- concerts page and map -------------------- */
+#map {
+	width: 100%;
+}
 #concerts-page {
-	margin: 0;
     height: 100dvh;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
 }
 #concerts-page nav,
 #concerts-page footer {
@@ -133,22 +140,13 @@ footer a:hover img {
 #concerts-page main {
     flex: 1;
     min-height: 0;
-	padding: 0;
-	overflow: hidden;
 }
 #concerts-page #map {
 	flex: 1;
     height: 100%;
     width: 100%;
 }
-@keyframes fadeIn {
-	from {opacity: 0;}
-	to {opacity: 1;}
-}
-@keyframes slide {
-	from {transform: translateX(-100%);}
-	to {transform: translateX(0);}
-}
+/* -------------------- media queries -------------------- */
 @media (min-width: 768px) { /* tablet */
 	nav {
 		justify-content: flex-end;

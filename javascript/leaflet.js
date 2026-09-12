@@ -32,6 +32,12 @@ function groupByVenue(concerts) {
     return venues;
 }
 
+function zoomToVenue(venue) {
+    map.flyTo(
+        [venue.venue_latitude, venue.venue_longitude], 14, {duration: 1}
+    );
+}
+
 function createVenueMarker(venue) {
     const marker = L.marker([
         venue.venue_latitude,
@@ -39,6 +45,10 @@ function createVenueMarker(venue) {
     ]);
 
     bindMarkerPopup(marker, venue);
+
+    marker.on('click', () => {
+        zoomToVenue(venue);
+    });
 
     return marker;
 }
