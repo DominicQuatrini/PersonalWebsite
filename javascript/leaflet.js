@@ -64,7 +64,8 @@ async function loadConcerts() {
     const markerGroup = L.markerClusterGroup({
         showCoverageOnHover: false,
         zoomToBoundsOnClick: true,
-        maxClusterRadius: 10
+        maxClusterRadius: 5,
+        disableClusteringAtZoom: 10
     });
 
     const bounds = L.latLngBounds();
