@@ -132,6 +132,8 @@ footer a:hover img {
 #concerts-page {
     height: 100dvh;
     overflow: hidden;
+	display: flex;
+	flex-direction: column;
 }
 #concerts-page nav,
 #concerts-page footer {
