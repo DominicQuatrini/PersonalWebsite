@@ -148,6 +148,11 @@ footer a:hover img {
     height: 100%;
     width: 100%;
 }
+.home-button {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+}
 /* -------------------- media queries -------------------- */
 @media (min-width: 768px) { /* tablet */
 	nav {

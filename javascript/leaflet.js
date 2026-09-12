@@ -34,7 +34,7 @@ function groupByVenue(concerts) {
 }
 
 function resetMapView() {
-    map.flyToBounds(bounds, {duration: 1});
+    map.flyToBounds(bounds, {padding: [50, 50], duration: 1});
 }
 
 function zoomToVenue(venue) {
@@ -79,7 +79,7 @@ function addHomeButton() {
     onAdd: function () {
         const button = L.DomUtil.create(
             'button',
-            'leaflet-bar leaflet-control'
+            'leaflet-bar leaflet-control home-button'
         );
 
         button.innerHTML = '⌂';
