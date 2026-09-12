@@ -149,9 +149,13 @@ footer a:hover img {
     width: 100%;
 }
 .home-button {
-    width: 35px;
-    height: 35px;
+    width: 34px;
+    height: 34px;
     font-size: 20px;
+}
+.home-button svg {
+    width: 20px;
+    height: 20px;
 }
 /* -------------------- media queries -------------------- */
 @media (min-width: 768px) { /* tablet */
