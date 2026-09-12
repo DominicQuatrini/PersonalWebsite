@@ -117,6 +117,28 @@ footer a:hover img {
 	min-height: 3vh;
 	gap: 1rem;
 }
+#concerts-page {
+	margin: 0;
+    height: 100dvh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+#concerts-page nav,
+#concerts-page footer {
+    flex-shrink: 0;
+}
+#concerts-page main {
+    flex: 1;
+    min-height: 0;
+	padding: 0;
+}
+#concerts-page #map {
+    flex: 1;
+    min-height: 0;
+    height: auto;
+    width: 100%;
+}
 @keyframes fadeIn {
 	from {opacity: 0;}
 	to {opacity: 1;}
@@ -133,39 +155,12 @@ footer a:hover img {
 		padding: 10px 12px;
 		font-size: 16pt;
 	}
-	#map {
-		height: 700px;
-		width: 100%;
-	}
 }
 @media (min-width: 1024px) { /* 1080p desktop */
 	html {
 		max-width: 1440px;
 		margin: 0 auto;
 	}
-	nav {
-		justify-content: flex-end;
-	}
-	nav a {
-		padding: 10px 12px;
-		font-size: 16pt;
-	}
-	#map {
-		height: 300px;
-		width: 100%;
-	}
 }
-
 @media (min-width: 1440px) { /* 1440p desktop */
-	nav {
-		justify-content: flex-end;
-	}
-	nav a {
-		padding: 10px 12px;
-		font-size: 16pt;
-	}
-	#map {
-		height: 1000px;
-		width: 100%;
-	}
 }
