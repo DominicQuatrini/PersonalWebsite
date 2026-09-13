@@ -1,5 +1,5 @@
 function htmlNavbar() {
-    const navbar = document.getElementByClass('navbarComponent');
+    const navbar = document.querySelector('.navbarComponent');
     navbar.innerHTML = `
 	<a href="index.html">home</a>
 	<a href="projects.html">projects</a>
@@ -9,7 +9,7 @@ function htmlNavbar() {
 }
 
 function htmlFooter() {
-    const footer = document.getElementByClass('footerComponent');
+    const footer = document.querySelector('.footerComponent');
     footer.innerHTML = `
 	<p>Copyright © 2026 Dominic Quatrini</p>
     <div id="socials">
