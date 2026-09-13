@@ -1,8 +1,8 @@
 const map = L.map('map');
 const bounds = L.latLngBounds();
-const concertsAttended = 0;
-const totalPrice = 0;
-const venuesVisited = 0;
+let concertsAttended = 0;
+let totalPrice = 0;
+let venuesVisited = 0;
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
