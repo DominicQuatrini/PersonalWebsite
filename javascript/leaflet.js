@@ -84,7 +84,10 @@ function formatPrice(price) {
         return 'Price unavailable';
     }
 
-    return `$${Number(price).toFixed(2)}`;
+    return `$${Number(price).toLocaleString('en-US', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    })}`;
 }
 
 function bindMarkerPopup(marker, venue) {
@@ -128,7 +131,10 @@ function addConcertStats() {
 
             button.innerHTML = `<strong>Concert Stats</strong><br>
                                 ${concertsAttended} concerts attended<br>
-                                $${totalPrice.toFixed(2)} spent on tickets<br>
+                                $${totalPrice.toLocaleString('en-US', {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2
+                                })} spent on tickets<br>
                                 ${venuesVisited} venues visited
                                 `;
 
