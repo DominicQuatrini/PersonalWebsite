@@ -166,3 +166,4 @@ async function loadConcerts() {
 
 loadConcerts();
 addHomeButton();
+addConcertStats();
