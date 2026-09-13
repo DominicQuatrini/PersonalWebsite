@@ -162,8 +162,9 @@ async function loadConcerts() {
 
     markerGroup.addTo(map);
     map.fitBounds(bounds, {padding: [50, 50]});
+
+    addConcertStats();
 }
 
 loadConcerts();
 addHomeButton();
-addConcertStats();
