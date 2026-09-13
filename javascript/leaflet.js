@@ -58,7 +58,7 @@ function formatTourName(tourName) {
         return '';
     }
 
-    return `- ${tourName}<br>`;
+    return `- ${tourName}`;
 }
 
 function formatDate(date) {
@@ -85,8 +85,8 @@ function bindMarkerPopup(marker, venue) {
         popupContent += `
             <hr>
             <strong>${concert.artists}</strong> ${formatTourName(concert.tour_name)}<br>
-            ${formatDate(concert.concert_date)}<br>
-            ${formatPrice(concert.ticket_price)}<br>`;
+            Date: ${formatDate(concert.concert_date)}<br>
+            Ticket Price: ${formatPrice(concert.ticket_price)}<br>`;
     }
     marker.bindPopup(popupContent);
 }
