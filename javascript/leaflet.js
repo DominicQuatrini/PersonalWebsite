@@ -53,6 +53,14 @@ function createVenueMarker(venue) {
     return marker;
 }
 
+function formatTourName(tourName) {
+    if (tourName === null) {
+        return '';
+    }
+
+    return `- ${tourName}<br>`;
+}
+
 function formatDate(date) {
     return new Date(date + 'T00:00:00').toLocaleDateString('en-US', {
         weekday: 'short',
@@ -62,15 +70,23 @@ function formatDate(date) {
     });
 }
 
+function formatPrice(price) {
+    if (price === null) {
+        return 'Price unavailable';
+    }
+
+    return `$${Number(price).toFixed(2)}`;
+}
+
 function bindMarkerPopup(marker, venue) {
-    let popupContent = `<strong>${venue.venue_name}</strong><br><br>`;
+    let popupContent = `<strong>${venue.venue_name}</strong><br>`;
 
     for (const concert of venue.concerts) {
         popupContent += `
             <hr>
-            <strong>${concert.artists}</strong> - ${concert.tour_name}<br>
+            <strong>${concert.artists}</strong> ${formatTourName(concert.tour_name)}<br>
             ${formatDate(concert.concert_date)}<br>
-            $${concert.ticket_price.toFixed(2)}<br><br>`;
+            ${formatPrice(concert.ticket_price)}<br><br>`;
     }
     marker.bindPopup(popupContent);
 }
