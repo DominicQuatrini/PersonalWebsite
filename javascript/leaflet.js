@@ -128,7 +128,7 @@ function addConcertStats() {
 
             button.innerHTML = `<strong>My Concert Stats</strong><br>
                                 ${concertsAttended} concerts attended<br>
-                                ${totalPrice.toFixed(2)} spent on tickets<br>
+                                $${totalPrice.toFixed(2)} spent on tickets<br>
                                 ${venuesVisited} venues visited
                                 `;
 
