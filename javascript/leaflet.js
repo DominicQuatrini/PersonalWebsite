@@ -1,5 +1,8 @@
 const map = L.map('map');
 const bounds = L.latLngBounds();
+const concertsAttended = 0;
+const totalPrice = 0;
+const venuesVisited = 0;
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -17,6 +20,11 @@ function groupByVenue(concerts) {
     const venues = {};
 
     for (const concert of concerts) {
+        concertsAttended++;
+        if (concert.ticket_price !== null) {
+            totalPrice += Number(concert.ticket_price);
+        }
+
         const venueID = concert.venue_id; // venues object acts as a dictionary to group concerts by venue_id
         // assign each concert event to its venue group in the venues object for future marker popup display
         if (!venues[venueID]) { // if the venues object encounters a new venue_id, it creates a new object for that venue with its name, coordinates, and an empty concerts array
@@ -26,6 +34,7 @@ function groupByVenue(concerts) {
                 venue_longitude: concert.venue_longitude,
                 concerts: []
             };
+            venuesVisited++;
         }
         venues[venueID].concerts.push(concert); // adds the current concert to the concerts array of the corresponding venue object
     }
@@ -109,6 +118,28 @@ function addHomeButton() {
         }
     });
     map.addControl(new homeControl());
+}
+
+function addConcertStats() {
+    const concertStatsControl = L.Control.extend({
+    options: {position: 'bottomleft'},
+        onAdd: function () {
+            const button = L.DomUtil.create('button', 'leaflet-bar leaflet-control stats-button');
+
+            button.innerHTML = `<strong>My Concert Stats</strong><br>
+                                ${concertsAttended} concerts attended<br>
+                                ${totalPrice.toFixed(2)} spent on tickets<br>
+                                ${venuesVisited} venues visited
+                                `;
+
+            button.type = 'button';
+
+            L.DomEvent.disableClickPropagation(button);
+
+            return button;
+        }
+    });
+    map.addControl(new concertStatsControl());
 }
 
 async function loadConcerts() {
