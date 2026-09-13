@@ -88,7 +88,7 @@ function bindMarkerPopup(marker, venue) {
             Date: ${formatDate(concert.concert_date)}<br>
             Ticket Price: ${formatPrice(concert.ticket_price)}<br>`;
     }
-    marker.bindPopup(popupContent);
+    marker.bindPopup(popupContent, {direction: right});
 }
 
 function addHomeButton() {
