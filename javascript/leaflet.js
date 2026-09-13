@@ -86,7 +86,7 @@ function bindMarkerPopup(marker, venue) {
             <hr>
             <strong>${concert.artists}</strong> ${formatTourName(concert.tour_name)}<br>
             ${formatDate(concert.concert_date)}<br>
-            ${formatPrice(concert.ticket_price)}<br><br>`;
+            ${formatPrice(concert.ticket_price)}<br>`;
     }
     marker.bindPopup(popupContent);
 }
