@@ -160,6 +160,7 @@ INSERT INTO concert_artists (concert_id, artist_id, artist_role) VALUES
 (24, 39, "headliner"),
 (25, 40, "headliner");
 
+-- Noah Kahan ----------------------------------------------------------------------------------------
 INSERT INTO concerts (concert_date, ticket_price, tour_name, venue_id) VALUES
 ("2026-08-30", 69.35, "The Great Divide Tour", 2);
 
@@ -171,3 +172,87 @@ INSERT INTO concert_artists (concert_id, artist_id, artist_role) VALUES
 (26, 41, "headliner"),
 (26, 42, "opener"),
 (26, 16, "opener");
+
+-- ROLE MODEL ----------------------------------------------------------------------------------------
+INSERT INTO concerts (concert_date, ticket_price, tour_name, venue_id) VALUES
+("2026-09-11", 57.5, "CHUCK ON TOUR", 6);
+
+INSERT INTO artists (artist_name) VALUES
+("Samia"),
+("ROLE MODEL");
+
+INSERT INTO concert_artists (concert_id, artist_id, artist_role) VALUES
+(27, 44, "headliner"),
+(27, 43, "opener");
+
+-- Phoebe Bridgers ----------------------------------------------------------------------------------------
+INSERT INTO concerts (concert_date, ticket_price, tour_name, venue_id) VALUES
+("2026-10-23", 224.25, "The Lost Tour", 1);
+
+INSERT INTO artists (artist_name) VALUES
+("Phoebe Bridgers"),
+("Alex G");
+
+INSERT INTO concert_artists (concert_id, artist_id, artist_role) VALUES
+(28, 45, "headliner"),
+(28, 46, "opener");
+
+-- greek ----------------------------------------------------------------------------------------
+INSERT INTO concerts (concert_date, ticket_price, tour_name, venue_id) VALUES
+("2026-09-14", 35.43, null, 15);
+
+INSERT INTO artists (artist_name) VALUES
+("greek");
+
+INSERT INTO concert_artists (concert_id, artist_id, artist_role) VALUES
+(30, 48, "headliner");
+
+-- Vansire ----------------------------------------------------------------------------------------
+INSERT INTO concerts (concert_date, ticket_price, tour_name, venue_id) VALUES
+("2026-11-10", 35.94, null, 15);
+
+INSERT INTO artists (artist_name) VALUES
+("Vansire");
+
+INSERT INTO concert_artists (concert_id, artist_id, artist_role) VALUES
+(31, 49, "headliner");
+
+-- Almost Monday ----------------------------------------------------------------------------------------
+INSERT INTO concerts (concert_date, ticket_price, tour_name, venue_id) VALUES
+("2026-10-16", 35.6, "THANK GOD IT'S ALMOST MONDAY", 12);
+
+INSERT INTO artists (artist_name) VALUES
+("Almost Monday");
+
+INSERT INTO concert_artists (concert_id, artist_id, artist_role) VALUES
+(29, 47, "headliner");
+
+-- Lord Huron ----------------------------------------------------------------------------------------
+INSERT INTO concerts (concert_date, ticket_price, tour_name, venue_id) VALUES
+("2027-01-07", 123.9, "An Evening with Lord Huron", 8);
+
+INSERT INTO artists (artist_name) VALUES
+("Lord Huron");
+
+INSERT INTO concert_artists (concert_id, artist_id, artist_role) VALUES
+(32, 18, "headliner");
+
+SELECT * FROM artists a
+JOIN concert_artists ca ON a.artist_id = ca.artist_id
+JOIN concerts c ON ca.concert_id = c.concert_id
+JOIN venues v ON c.venue_id = v.venue_id
+ORDER BY c.concert_date;
+
+-- Madam Lou's/The Crocodile Reconstruct ----------------------------------------------------------------------------------------
+DELETE FROM concerts WHERE concert_id=6; -- delete Jordana's concert at Madame Lou's
+
+DELETE FROM venues WHERE venue_id=3; -- delete Madame Lou's
+
+UPDATE venues SET venue_name="Madame Lou's / The Crocodile" WHERE venue_id=13; -- change The Crocodile's name to include Madame Lou's
+
+INSERT INTO concerts (concert_id,concert_date, ticket_price, tour_name, venue_id) VALUES
+(6, "2025-02-12", 33.07, "Lively Premonition Tour", 13); -- reinsert Jordana's concert at the new venue
+
+INSERT INTO concert_artists (concert_id, artist_id, artist_role) VALUES
+(6, 7, "headliner"),
+(6, 8, "opener"); -- reinsert Jordana's concert artists at the new venue
