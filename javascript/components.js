@@ -24,3 +24,6 @@ function htmlFooter() {
     </footer>
     `
 }
+
+htmlNavbar();
+htmlFooter();
