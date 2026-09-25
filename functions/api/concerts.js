@@ -10,12 +10,11 @@ export async function onRequest(context) { // server-side API endpoint and Cloud
                     FROM concert_artists ca
                     JOIN artists a ON ca.artist_id = a.artist_id
                     WHERE ca.concert_id = c.concert_id
-                    ORDER BY ca.artist_role ASC
-                ) AS subquery
+                    ORDER BY CASE WHEN ca.artist_role = 'headliner' THEN 0 ELSE 1 END
+                )
             ) AS artists
         FROM concerts c
         JOIN venues v ON c.venue_id = v.venue_id
-        GROUP BY c.concert_id
     `).all();
 
     return Response.json(queryResults.results);
