@@ -7,15 +7,14 @@ export async function onRequest(context) { // server-side API endpoint and Cloud
                 SELECT GROUP_CONCAT(a.artist_name, ', ')
                 FROM (
                     SELECT a.artist_name
-                    FROM concert_artists ca2
-                    JOIN artists a ON ca2.artist_id = a.artist_id
-                    WHERE ca2.concert_id = c.concert_id
-                    ORDER BY ca2.artist_role ASC
+                    FROM concert_artists ca
+                    JOIN artists a ON ca.artist_id = a.artist_id
+                    WHERE ca.concert_id = c.concert_id
+                    ORDER BY ca.artist_role ASC
                 ) AS subquery
             ) AS artists
         FROM concerts c
         JOIN venues v ON c.venue_id = v.venue_id
-        JOIN concert_artists ca ON c.concert_id = ca.concert_id
         GROUP BY c.concert_id
     `).all();
 
