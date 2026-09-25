@@ -237,12 +237,6 @@ INSERT INTO artists (artist_name) VALUES
 INSERT INTO concert_artists (concert_id, artist_id, artist_role) VALUES
 (32, 18, "headliner");
 
-SELECT * FROM artists a
-JOIN concert_artists ca ON a.artist_id = ca.artist_id
-JOIN concerts c ON ca.concert_id = c.concert_id
-JOIN venues v ON c.venue_id = v.venue_id
-ORDER BY c.concert_date;
-
 -- Madam Lou's/The Crocodile Reconstruct ----------------------------------------------------------------------------------------
 DELETE FROM concerts WHERE concert_id=6; -- delete Jordana's concert at Madame Lou's
 
@@ -256,3 +250,53 @@ INSERT INTO concerts (concert_id,concert_date, ticket_price, tour_name, venue_id
 INSERT INTO concert_artists (concert_id, artist_id, artist_role) VALUES
 (6, 7, "headliner"),
 (6, 8, "opener"); -- reinsert Jordana's concert artists at the new venue
+
+-- sombr tour update ----------------------------------------------------------------------------------------
+UPDATE concerts SET tour_name="The Late Nights & Young Romance Tour" WHERE concert_id=14;
+
+-- greek tour update ----------------------------------------------------------------------------------------
+UPDATE concerts SET tour_name="greek! live" WHERE concert_id=30;
+
+-- Jack Johnson tour update ----------------------------------------------------------------------------------------
+INSERT INTO artists (artist_name) VALUES
+("Hermanos Gutierrez"),
+("G. Love");
+
+INSERT INTO concert_artists (concert_id, artist_id, artist_role) VALUES
+(23, 50, "opener"),
+(23, 51, "opener");
+
+-- beabadoobee tour update ----------------------------------------------------------------------------------------
+INSERT INTO artists (artist_name) VALUES
+("Wisp");
+
+INSERT INTO concert_artists (concert_id, artist_id, artist_role) VALUES
+(25, 52, "opener");
+
+-- Almost Monday tour update ----------------------------------------------------------------------------------------
+INSERT INTO artists (artist_name) VALUES
+("Sun Room");
+
+INSERT INTO concert_artists (concert_id, artist_id, artist_role) VALUES
+(29, 53, "opener");
+
+-- Omar Apollo tour update ----------------------------------------------------------------------------------------
+UPDATE concerts SET tour_name="God Said No World Tour" WHERE concert_id=3;
+
+-- The Marias tour update ----------------------------------------------------------------------------------------
+UPDATE concerts SET tour_name="The Submarine Tour (Extended)" WHERE concert_id=9;
+
+-- The Neighbourhood tour update ----------------------------------------------------------------------------------------
+INSERT INTO artists (artist_name) VALUES
+("After"),
+("Noise Dept.");
+
+INSERT INTO concert_artists (concert_id, artist_id, artist_role) VALUES
+(24, 54, "opener"),
+(24, 55, "opener");
+----------------------------------------------------------------------------------------
+SELECT a.artist_id, a.artist_name, ca.artist_role, c.concert_id, c.tour_name, c.concert_date FROM artists a
+JOIN concert_artists ca ON a.artist_id = ca.artist_id
+JOIN concerts c ON ca.concert_id = c.concert_id
+JOIN venues v ON c.venue_id = v.venue_id
+ORDER BY c.concert_date;
