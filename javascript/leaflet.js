@@ -47,7 +47,7 @@ function resetMapView() {
 }
 
 function zoomToVenue(venue) {
-    map.flyTo([venue.venue_latitude, venue.venue_longitude], 14, {duration: 1});
+    map.flyTo([venue.venue_latitude + 0.003, venue.venue_longitude], 14, {duration: 1});
 }
 
 function createVenueMarker(venue) {
@@ -100,7 +100,7 @@ function bindMarkerPopup(marker, venue) {
             ${formatDate(concert.concert_date)}<br>
             Ticket Price: ${formatPrice(concert.ticket_price)}<br>`;
     }
-    marker.bindPopup(popupContent, {direction: 'auto', maxHeight: 200, autoPan: true, autoPanPadding: [50, 50]});
+    marker.bindPopup(popupContent, {direction: 'auto', maxHeight: 200, autoPan: true, autoPanPadding: [100, 100]});
 }
 
 function addHomeButton() {
