@@ -47,7 +47,7 @@ function resetMapView() {
 }
 
 function zoomToVenue(venue) {
-    map.flyTo([venue.venue_latitude + 0.003, venue.venue_longitude], 14, {duration: 1});
+    map.flyTo([venue.venue_latitude + 0.005, venue.venue_longitude], 14, {duration: 1});
 }
 
 function createVenueMarker(venue) {

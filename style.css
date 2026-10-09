@@ -177,7 +177,7 @@ footer a:hover img {
     justify-content: center;
 }
 .leaflet-popup-content-wrapper {
-    max-width: 200px;
+    max-width: 250px;
 }
 /* -------------------- media queries -------------------- */
 @media (min-width: 768px) { /* tablet */
