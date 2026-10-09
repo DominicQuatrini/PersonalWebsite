@@ -176,6 +176,9 @@ footer a:hover img {
     align-items: center;
     justify-content: center;
 }
+.leaflet-popup-content-wrapper {
+    max-width: 320px;
+}
 /* -------------------- media queries -------------------- */
 @media (min-width: 768px) { /* tablet */
 	nav {
@@ -185,6 +188,13 @@ footer a:hover img {
 		padding: 10px 12px;
 		font-size: 16pt;
 	}
+	.leaflet-popup-content-wrapper {
+        max-width: 200px;
+    }
+    .leaflet-popup-content {
+        max-height: 160px;
+        overflow-y: auto;
+    }
 }
 @media (min-width: 1024px) { /* 1080p desktop */
 	html {

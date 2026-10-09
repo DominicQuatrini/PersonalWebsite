@@ -2,7 +2,6 @@ function htmlNavbar() {
     const navbar = document.querySelector('.navbarComponent');
     navbar.innerHTML = `
 	<a href="index.html">home</a>
-	<a href="projects.html">projects</a>
 	<a href="concerts.html">concerts</a>
     `
 }
