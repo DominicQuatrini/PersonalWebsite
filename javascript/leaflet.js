@@ -100,7 +100,7 @@ function bindMarkerPopup(marker, venue) {
             ${formatDate(concert.concert_date)}<br>
             Ticket Price: ${formatPrice(concert.ticket_price)}<br>`;
     }
-    marker.bindPopup(popupContent, {direction: 'auto', maxHeight: 200, autoPan: true, autoPanPadding: [100, 100]});
+    marker.bindPopup(popupContent, {direction: 'auto', maxHeight: 200, autoPan: true, autoPanPadding: [10, 10]});
 }
 
 function addHomeButton() {

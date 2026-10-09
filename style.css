@@ -189,7 +189,7 @@ footer a:hover img {
 		font-size: 16pt;
 	}
 	.leaflet-popup-content-wrapper {
-        max-width: 300px;
+        max-width: 400px;
     }
     .leaflet-popup-content {
         max-height: 160px;
