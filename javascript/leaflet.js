@@ -100,7 +100,7 @@ function bindMarkerPopup(marker, venue) {
             ${formatDate(concert.concert_date)}<br>
             Ticket Price: ${formatPrice(concert.ticket_price)}<br>`;
     }
-    marker.bindPopup(popupContent, {direction: 'auto', maxHeight: 225, autoPan: true, autoPanPadding: [5, 10]});
+    marker.bindPopup(popupContent, {direction: 'auto', maxHeight: 225});
 }
 
 function addHomeButton() {
@@ -113,7 +113,10 @@ function addHomeButton() {
             button.title = 'Reset map view';
             button.type = 'button';
 
-            button.addEventListener('click', resetMapView);
+            button.addEventListener('click', () => {
+                map.closePopup();
+                resetMapView();
+            });
 
             L.DomEvent.disableClickPropagation(button);
 
