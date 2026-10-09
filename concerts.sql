@@ -257,6 +257,12 @@ UPDATE concerts SET tour_name="The Late Nights & Young Romance Tour" WHERE conce
 -- greek tour update ----------------------------------------------------------------------------------------
 UPDATE concerts SET tour_name="greek! live" WHERE concert_id=30;
 
+INSERT INTO artists (artist_name) VALUES
+("Humble the Great");
+
+INSERT INTO concert_artists (concert_id, artist_id, artist_role) VALUES
+(30, 56, "opener");
+
 -- Jack Johnson tour update ----------------------------------------------------------------------------------------
 INSERT INTO artists (artist_name) VALUES
 ("Hermanos Gutierrez"),
@@ -294,6 +300,10 @@ INSERT INTO artists (artist_name) VALUES
 INSERT INTO concert_artists (concert_id, artist_id, artist_role) VALUES
 (24, 54, "opener"),
 (24, 55, "opener");
+
+-- Not for Radio tour update ----------------------------------------------------------------------------------------
+UPDATE concerts SET concert_date="2026-11-12" WHERE concert_id=19;
+
 ----------------------------------------------------------------------------------------
 SELECT a.artist_id, a.artist_name, ca.artist_role, c.concert_id, c.tour_name, c.concert_date FROM artists a
 JOIN concert_artists ca ON a.artist_id = ca.artist_id
